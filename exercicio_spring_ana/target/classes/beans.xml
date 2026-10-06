@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="pedidoController" class="spring_xml.controller.PedidoController">
+        <constructor-arg index="0" ref="pedidoService"/>
+    </bean>
+
+<!--    Autowired só funciona com metodos ou reflection-->
+<!--    by name pega o nome do setter ou propertie e tenda bater com o bean-->
+    <bean id="pedidoService" class="spring_xml.service.PedidoService" autowire="byType">
+    </bean>
+
+    <bean id="pedidoRepository" class="spring_xml.repository.PedidoRepository"></bean>
+
+    <bean id="emailNotificacaoService" class="spring_xml.service.EmailNotificacaoService"></bean>
+    <bean id="smsNotificacaoService" class="spring_xml.service.SmsNotificacaoService" primary="true"></bean>
+</beans>
